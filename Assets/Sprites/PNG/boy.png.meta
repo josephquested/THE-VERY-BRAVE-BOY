@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c7fc18021c5a0a044a1423c7f31a34f7
-timeCreated: 1497515466
+timeCreated: 1497768684
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -14,6 +14,24 @@ TextureImporter:
     21300014: boy-moving-2b
     21300016: boy-idle-3
     21300018: boy-moving-3
+    21300020: boy-idle-0
+    21300022: boy-moving-0a
+    21300024: boy-moving-0b
+    21300026: boy_3
+    21300028: boy_4
+    21300030: boy-idle-2
+    21300032: boy_6
+    21300034: boy_7
+    21300036: boy_8
+    21300038: boy_9
+    21300040: boy_10
+    21300042: boy_11
+    21300044: boy_12
+    21300046: boy_13
+    21300048: boy_0
+    21300050: boy_1
+    21300052: boy_2
+    21300054: boy_5
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -80,7 +98,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boy-idle-0
+      name: boy_0
       rect:
         serializedVersion: 2
         x: 0
@@ -88,12 +106,12 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: boy-moving-0a
+      name: boy_1
       rect:
         serializedVersion: 2
         x: 16
@@ -101,12 +119,12 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: boy-moving-0b
+      name: boy_2
       rect:
         serializedVersion: 2
         x: 32
@@ -114,12 +132,12 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: boy-idle-1
+      name: boy_3
       rect:
         serializedVersion: 2
         x: 48
@@ -127,12 +145,12 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: boy-moving-1
+      name: boy_4
       rect:
         serializedVersion: 2
         x: 64
@@ -140,12 +158,12 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: boy-idle-2
+      name: boy_5
       rect:
         serializedVersion: 2
         x: 80
@@ -153,12 +171,12 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: boy-moving-2a
+      name: boy_6
       rect:
         serializedVersion: 2
         x: 96
@@ -166,12 +184,12 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: boy-moving-2b
+      name: boy_7
       rect:
         serializedVersion: 2
         x: 112
@@ -179,12 +197,12 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: boy-idle-3
+      name: boy_8
       rect:
         serializedVersion: 2
         x: 128
@@ -192,12 +210,12 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: boy-moving-3
+      name: boy_9
       rect:
         serializedVersion: 2
         x: 144
@@ -205,7 +223,59 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: boy_10
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: boy_11
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: boy_12
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: boy_13
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

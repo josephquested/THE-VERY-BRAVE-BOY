@@ -92,6 +92,8 @@ public class Boy : MonoBehaviour {
 
 	// ATTACK //
 
+	bool attacking;
+
 	public void ReceiveAttack (bool attackDown)
 	{
 		if (attackDown)
@@ -115,5 +117,14 @@ public class Boy : MonoBehaviour {
 	{
 		anim.SetBool("Moving", moving);
 		anim.SetInteger("Direction", direction);
+		anim.SetInteger("Attacking", attacking);
+		if (blocking)
+		{
+			anim.speed = 0.75f;
+		}
+		else
+		{
+			anim.speed = 1f;
+		}
 	}
 }
