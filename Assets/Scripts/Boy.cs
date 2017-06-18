@@ -94,12 +94,21 @@ public class Boy : MonoBehaviour {
 
 	bool attacking;
 
+	public float attackDuration;
+
 	public void ReceiveAttack (bool attackDown)
 	{
-		if (attackDown)
+		if (attackDown && !attacking)
 		{
-			anim.SetTrigger("Attack");
+			StartCoroutine(AttackRoutine());
 		}
+	}
+
+	IEnumerator AttackRoutine ()
+	{
+		attacking = true;
+		yield return new WaitForSeconds(attackDuration);
+		attacking = false;
 	}
 
 	// BLOCK //
@@ -116,8 +125,8 @@ public class Boy : MonoBehaviour {
 	void UpdateAnimator ()
 	{
 		anim.SetBool("Moving", moving);
+		anim.SetBool("Attacking", attacking);
 		anim.SetInteger("Direction", direction);
-		anim.SetInteger("Attacking", attacking);
 		if (blocking)
 		{
 			anim.speed = 0.75f;
