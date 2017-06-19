@@ -69,7 +69,7 @@ public class Boy : MonoBehaviour {
 
 	void UpdateDirection ()
 	{
-		if (!blocking)
+		if (!blocking && !attacking)
 		{
 			if (horizontal == -1) direction = 3;
 			else if (horizontal == 1) direction = 1;
