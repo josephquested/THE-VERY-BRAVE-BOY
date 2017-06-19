@@ -13,6 +13,7 @@ public class Boy : MonoBehaviour {
 	{
 		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
+		weaponSpriteRenderer = weaponObject.GetComponent<SpriteRenderer>();
 	}
 
 	void Update ()
@@ -21,6 +22,7 @@ public class Boy : MonoBehaviour {
 		UpdateMovement();
 		UpdateDirection();
 		UpdateAnimator();
+		UpdateWeapon();
 	}
 
 	// MOVEMENT //
@@ -87,13 +89,16 @@ public class Boy : MonoBehaviour {
 	{
 		float speedModifier = 0;
 		if (blocking) speedModifier += blockSpeedModifier;
+		if (attacking) speedModifier -= 10;
 		_speed = speed + speedModifier;
+		if (_speed < 0) _speed = 0;
 	}
 
 	// ATTACK //
 
 	bool attacking;
 
+	public GameObject weaponObject;
 	public float attackDuration;
 	public float thrust;
 
@@ -108,14 +113,9 @@ public class Boy : MonoBehaviour {
 	IEnumerator AttackRoutine ()
 	{
 		attacking = true;
-		SpawnAttackObject();
+		Thrust();
 		yield return new WaitForSeconds(attackDuration);
 		attacking = false;
-	}
-
-	void SpawnAttackObject ()
-	{
-		Thrust();
 	}
 
 	void Thrust ()
@@ -124,8 +124,41 @@ public class Boy : MonoBehaviour {
 		if (direction == 1) force = Vector2.right;
 		if (direction == 2) force = Vector2.down;
 		if (direction == 3) force = Vector2.left;
-		rb.velocity = Vector2.zero;
 		rb.AddForce(force * thrust, ForceMode2D.Impulse);
+	}
+
+	// WEAPON //
+
+	SpriteRenderer weaponSpriteRenderer;
+
+	void UpdateWeapon ()
+	{
+		if (direction == 0)
+		{
+			weaponObject.transform.localPosition = new Vector3(0.05f, 0.75f, 0);
+			weaponObject.transform.rotation = Quaternion.Euler(0, 0, 180);
+			weaponSpriteRenderer.sortingOrder = 4;
+		}
+		if (direction == 1)
+		{
+			weaponObject.transform.localPosition = new Vector3(0.87f, -0.155f, 0);
+			weaponObject.transform.rotation = Quaternion.Euler(0, 0, 90);
+			weaponSpriteRenderer.sortingOrder = 5;
+		}
+		if (direction == 2)
+		{
+			weaponObject.transform.localPosition = new Vector3(-0.025f, -0.935f, 0);
+			weaponObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+			weaponSpriteRenderer.sortingOrder = 5;
+		}
+		if (direction == 3)
+		{
+			weaponObject.transform.localPosition = new Vector3(-0.87f, -0.1f, 0);
+			weaponObject.transform.rotation = Quaternion.Euler(0, 0, -90);
+			weaponSpriteRenderer.sortingOrder = 5;
+		}
+
+		weaponObject.SetActive(attacking);
 	}
 
 	// BLOCK //
