@@ -95,6 +95,7 @@ public class Boy : MonoBehaviour {
 	bool attacking;
 
 	public float attackDuration;
+	public float thrust;
 
 	public void ReceiveAttack (bool attackDown)
 	{
@@ -107,8 +108,24 @@ public class Boy : MonoBehaviour {
 	IEnumerator AttackRoutine ()
 	{
 		attacking = true;
+		SpawnAttackObject();
 		yield return new WaitForSeconds(attackDuration);
 		attacking = false;
+	}
+
+	void SpawnAttackObject ()
+	{
+		Thrust();
+	}
+
+	void Thrust ()
+	{
+		Vector2 force = Vector2.up;
+		if (direction == 1) force = Vector2.right;
+		if (direction == 2) force = Vector2.down;
+		if (direction == 3) force = Vector2.left;
+		rb.velocity = Vector2.zero;
+		rb.AddForce(force * thrust, ForceMode2D.Impulse);
 	}
 
 	// BLOCK //

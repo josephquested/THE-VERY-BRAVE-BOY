@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Init : MonoBehaviour {
+public class GameController : MonoBehaviour {
 
 	// SYSTEM //
 
 	void Awake ()
 	{
 		Cursor.visible = false;
-		Destroy(gameObject);
+	}
+
+	void Update ()
+	{
+		if (Input.GetButtonDown("Cancel"))
+		{
+			Application.Quit();
+		}
 	}
 }
