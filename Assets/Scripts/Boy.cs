@@ -133,32 +133,35 @@ public class Boy : MonoBehaviour {
 
 	void UpdateWeapon ()
 	{
+		weaponObject.SetActive(attacking);
+
 		if (direction == 0)
 		{
 			weaponObject.transform.localPosition = new Vector3(0.05f, 0.75f, 0);
 			weaponObject.transform.rotation = Quaternion.Euler(0, 0, 180);
 			weaponSpriteRenderer.sortingOrder = 4;
 		}
+
 		if (direction == 1)
 		{
 			weaponObject.transform.localPosition = new Vector3(0.87f, -0.155f, 0);
 			weaponObject.transform.rotation = Quaternion.Euler(0, 0, 90);
 			weaponSpriteRenderer.sortingOrder = 5;
 		}
+
 		if (direction == 2)
 		{
 			weaponObject.transform.localPosition = new Vector3(-0.025f, -0.935f, 0);
 			weaponObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 			weaponSpriteRenderer.sortingOrder = 5;
 		}
+
 		if (direction == 3)
 		{
 			weaponObject.transform.localPosition = new Vector3(-0.87f, -0.1f, 0);
 			weaponObject.transform.rotation = Quaternion.Euler(0, 0, -90);
 			weaponSpriteRenderer.sortingOrder = 5;
 		}
-
-		weaponObject.SetActive(attacking);
 	}
 
 	// BLOCK //
@@ -174,16 +177,11 @@ public class Boy : MonoBehaviour {
 
 	void UpdateAnimator ()
 	{
+		if (blocking) anim.speed = 0.75f;
+		else { anim.speed = 1f; }
+
 		anim.SetBool("Moving", moving);
 		anim.SetBool("Attacking", attacking);
 		anim.SetInteger("Direction", direction);
-		if (blocking)
-		{
-			anim.speed = 0.75f;
-		}
-		else
-		{
-			anim.speed = 1f;
-		}
 	}
 }
