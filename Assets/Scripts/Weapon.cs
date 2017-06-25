@@ -2,22 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour {
+public class Weapon : Equipment {
 
-	// SYSTEM //
-
-	void Start ()
-	{
+	// Use this for initialization
+	void Start () {
 
 	}
 
-	void Update ()
-	{
+	// Update is called once per frame
+	void Update () {
 
 	}
-
-	// STATE //
-
-	public bool inInventory;
-
 }

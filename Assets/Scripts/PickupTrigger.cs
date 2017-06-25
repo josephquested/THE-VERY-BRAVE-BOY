@@ -6,14 +6,23 @@ public class PickupTrigger : MonoBehaviour {
 
 	// SYSTEM //
 
-	void Start ()
-	{
-
-	}
+	public Slots slots;
 
 	void Update ()
 	{
 		UpdateSpacebarUI();
+		UpdatePickupInput();
+	}
+
+	// INPUT //
+
+	void UpdatePickupInput ()
+	{
+		if (Input.GetButtonDown("Action") && equipmentInTrigger != null)
+		{
+			slots.ReceiveEquipment(equipmentInTrigger);
+			equipmentInTrigger = null;
+		}
 	}
 
 	 // UI //
@@ -22,33 +31,32 @@ public class PickupTrigger : MonoBehaviour {
 
 	 void UpdateSpacebarUI ()
 	 {
-		 spacebarUI.SetActive(weaponInTrigger);
+		 spacebarUI.SetActive(equipmentInTrigger);
 	 }
 
 	// TRIGGER //
 
-	public Weapon weaponInTrigger;
+	public Equipment equipmentInTrigger;
 
 	void OnTriggerEnter2D (Collider2D collider)
 	{
-		if (collider.tag == "Weapon")
+		if (collider.GetComponent<Equipment>() != null)
 		{
-			Weapon weapon = collider.GetComponent<Weapon>();
-			if (!weapon.inInventory)
+			Equipment equipment = collider.GetComponent<Equipment>();
+			if (!equipment.equipped)
 			{
-				weaponInTrigger = weapon;
+				equipmentInTrigger = equipment;
 			}
 		}
 	}
 
 	void OnTriggerExit2D (Collider2D collider)
 	{
-		if (collider.tag == "Weapon")
+		if (collider.GetComponent<Equipment>() != null)
 		{
-			Weapon weapon = collider.GetComponent<Weapon>();
-			if (!weapon.inInventory)
+			if (!collider.GetComponent<Equipment>().equipped)
 			{
-				weaponInTrigger = null;
+				equipmentInTrigger = null;
 			}
 		}
 	}
