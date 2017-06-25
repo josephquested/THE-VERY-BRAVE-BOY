@@ -4,17 +4,6 @@ using UnityEngine;
 
 public class Weapon : Equipment {
 
-	// SYSTEM //
-
-	SpriteRenderer spriteRenderer;
-	Collider2D col;
-
-	void Start ()
-	{
-		spriteRenderer = GetComponent<SpriteRenderer>();
-		col = GetComponent<Collider2D>();
-	}
-
 	// ATTACK //
 
 	public float damage;

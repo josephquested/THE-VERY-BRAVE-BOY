@@ -8,14 +8,25 @@ public class Equipment : MonoBehaviour {
 
 	// SYSTEM //
 
+	protected SpriteRenderer spriteRenderer;
+	protected Collider2D col;
+
 	void Start ()
 	{
-
+		spriteRenderer = GetComponent<SpriteRenderer>();
+		col = GetComponent<Collider2D>();
 	}
 
 	// STATE //
 
-	public SlotType slotType; 
+	public SlotType slotType;
 	public bool equipped;
 
+	public void EquipToParent (Transform parent)
+	{
+		equipped = true;
+		col.enabled = false;
+		spriteRenderer.enabled = false;
+		transform.parent = parent;
+	}
 }

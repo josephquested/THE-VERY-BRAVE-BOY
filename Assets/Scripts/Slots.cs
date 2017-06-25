@@ -22,6 +22,7 @@ public class Slots : MonoBehaviour {
 
 	public void ReceiveEquipment (Equipment equipment)
 	{
+		equipment.EquipToParent(transform);
 		equipmentInSlot[(int)equipment.slotType] = equipment;
 	}
 }

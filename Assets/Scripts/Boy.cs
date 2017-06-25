@@ -94,8 +94,6 @@ public class Boy : MonoBehaviour {
 
 	// MELEE //
 
-	public Weapon meleeWeapon;
-
 	void UpdateMelee ()
 	{
 		if (meleeDown && !attacking)
@@ -106,6 +104,8 @@ public class Boy : MonoBehaviour {
 
 	IEnumerator MeleeRoutine ()
 	{
+		Weapon meleeWeapon = slots.equipmentInSlot[(int)SlotType.S] as Weapon;
+
 		attacking = true;
 		meleeWeapon.AttackInDirection(direction);
 
