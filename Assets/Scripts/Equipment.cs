@@ -29,4 +29,12 @@ public class Equipment : MonoBehaviour {
 		spriteRenderer.enabled = false;
 		transform.parent = parent;
 	}
+
+	public void Unequip ()
+	{
+		equipped = false;
+		col.enabled = true;
+		spriteRenderer.enabled = true;
+		transform.parent = null;
+	}
 }

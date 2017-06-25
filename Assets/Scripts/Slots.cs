@@ -4,18 +4,6 @@ using UnityEngine;
 
 public class Slots : MonoBehaviour {
 
-	// SYSTEM //
-
-	void Start ()
-	{
-
-	}
-
-	void Update ()
-	{
-
-	}
-
 	// EQUIPMENT //
 
 	public Equipment[] equipmentInSlot = new Equipment[4];

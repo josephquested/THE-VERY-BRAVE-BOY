@@ -7,12 +7,14 @@ public class Weapon : Equipment {
 	// ATTACK //
 
 	public float damage;
+	public float thrust;
 	public float attackDuration;
 
 	public void AttackInDirection (int direction)
 	{
 		col.enabled = true;
 		spriteRenderer.enabled = true;
+		Thrust(direction);
 
 		if (direction == 0)
 		{
@@ -47,5 +49,14 @@ public class Weapon : Equipment {
 	{
 		col.enabled = false;
 		spriteRenderer.enabled = false;
+	}
+
+	void Thrust (int direction)
+	{
+		Vector2 force = Vector2.up;
+		if (direction == 1) force = Vector2.right;
+		if (direction == 2) force = Vector2.down;
+		if (direction == 3) force = Vector2.left;
+		transform.parent.GetComponent<Rigidbody2D>().AddForce(force * thrust, ForceMode2D.Impulse);
 	}
 }
