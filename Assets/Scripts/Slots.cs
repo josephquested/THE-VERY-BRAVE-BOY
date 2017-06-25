@@ -18,10 +18,10 @@ public class Slots : MonoBehaviour {
 
 	// EQUIPMENT //
 
-	public Equipment[] equipmentSlots = new Equipment[4];
+	public Equipment[] equipmentInSlot = new Equipment[4];
 
 	public void ReceiveEquipment (Equipment equipment)
 	{
-		equipmentSlots[(int)equipment.slotType] = equipment;
+		equipmentInSlot[(int)equipment.slotType] = equipment;
 	}
 }

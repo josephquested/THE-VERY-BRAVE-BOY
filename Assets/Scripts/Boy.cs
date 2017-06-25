@@ -2,42 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boy : MonoBehaviour {
+public class Boy : Actor {
 
 	// SYSTEM //
 
-	Rigidbody2D rb;
-	Animator anim;
-
 	void Start ()
 	{
-		rb = GetComponent<Rigidbody2D>();
-		anim = GetComponent<Animator>();
+		slots = GetComponent<Slots>();
 	}
 
 	void Update ()
 	{
-		UpdateSpeed();
 		UpdateMovement();
+		
+		UpdateSpeed();
+		UpdateAttack();
+		UpdateBlock();
 		UpdateDirection();
 		UpdateAnimator();
-		UpdateWeapon();
 	}
+
+	// INVENTORY //
+
+	Slots slots;
 
 	// MOVEMENT //
 
-	bool moving;
-	float horizontal;
-	float vertical;
-
-	public void ReceiveMovement (float _horizontal, float _vertical)
-	{
-		horizontal = _horizontal;
-		vertical = _vertical;
-	}
-
 	void UpdateMovement ()
 	{
+		horizontal = Input.GetAxisRaw("Horizontal");
+		vertical = Input.GetAxisRaw("Vertical");
+
 		if (horizontal != 0 || vertical != 0)
 		{
 			moving = true;
@@ -64,9 +59,6 @@ public class Boy : MonoBehaviour {
 
 	// DIRECTION //
 
-	public int direction;
-
-	void UpdateDirection ()
 	{
 		if (!blocking && !attacking)
 		{
@@ -96,14 +88,12 @@ public class Boy : MonoBehaviour {
 	// ATTACK //
 
 	bool attacking;
-
-	public GameObject weaponObject;
 	public float attackDuration;
 	public float thrust;
 
-	public void ReceiveAttack (bool attackDown)
+	void UpdateAttack ()
 	{
-		if (attackDown && !attacking && weaponObject != null)
+		if (Input.GetButtonDown("S") && !attacking && slots.equipmentInSlot[1] != null)
 		{
 			StartCoroutine(AttackRoutine());
 		}
@@ -111,10 +101,22 @@ public class Boy : MonoBehaviour {
 
 	IEnumerator AttackRoutine ()
 	{
-		attacking = true;
-		Thrust();
+		MeleeAttack(true);
 		yield return new WaitForSeconds(attackDuration);
-		attacking = false;
+		MeleeAttack(false);
+	}
+
+	void MeleeAttack (bool _attacking)
+	{
+		Weapon weapon = equipmentInSlot[(int)SlotType.S];
+		attacking = _attacking;
+		weapon.SetActive(attacking);
+
+		if (attacking)
+		{
+			weapon.AttackInDirection(direction);
+			Thrust();
+		}
 	}
 
 	void Thrust ()
@@ -126,54 +128,13 @@ public class Boy : MonoBehaviour {
 		rb.AddForce(force * thrust, ForceMode2D.Impulse);
 	}
 
-	// WEAPON //
-
-	SpriteRenderer weaponSpriteRenderer;
-
-	void UpdateWeapon ()
-	{
-		if (weaponObject != null)
-		{
-			weaponSpriteRenderer = weaponObject.GetComponent<SpriteRenderer>();
-			weaponObject.SetActive(attacking);
-
-			if (direction == 0)
-			{
-				weaponObject.transform.localPosition = new Vector3(0.05f, 0.75f, 0);
-				weaponObject.transform.rotation = Quaternion.Euler(0, 0, 180);
-				weaponSpriteRenderer.sortingOrder = 4;
-			}
-
-			if (direction == 1)
-			{
-				weaponObject.transform.localPosition = new Vector3(0.87f, -0.155f, 0);
-				weaponObject.transform.rotation = Quaternion.Euler(0, 0, 90);
-				weaponSpriteRenderer.sortingOrder = 5;
-			}
-
-			if (direction == 2)
-			{
-				weaponObject.transform.localPosition = new Vector3(-0.025f, -0.935f, 0);
-				weaponObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-				weaponSpriteRenderer.sortingOrder = 5;
-			}
-
-			if (direction == 3)
-			{
-				weaponObject.transform.localPosition = new Vector3(-0.87f, -0.1f, 0);
-				weaponObject.transform.rotation = Quaternion.Euler(0, 0, -90);
-				weaponSpriteRenderer.sortingOrder = 5;
-			}
-		}
-	}
-
 	// BLOCK //
 
 	bool blocking;
 
-	public void ReceiveBlock (bool _blocking)
+	public void UpdateBlock ()
 	{
-		blocking = _blocking;
+		blocking = Input.GetButton("Block");
 	}
 
 	// ANIMATOR //
