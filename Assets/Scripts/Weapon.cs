@@ -7,16 +7,24 @@ public class Weapon : Equipment {
 	// SYSTEM //
 
 	SpriteRenderer spriteRenderer;
+	Collider2D col;
 
 	void Start ()
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		col = GetComponent<Collider2D>();
 	}
 
-	// WEAPON //
+	// ATTACK //
+
+	public float damage;
+	public float attackDuration;
 
 	public void AttackInDirection (int direction)
 	{
+		col.enabled = true;
+		spriteRenderer.enabled = true;
+
 		if (direction == 0)
 		{
 			transform.localPosition = new Vector3(0.05f, 0.75f, 0);
@@ -44,5 +52,11 @@ public class Weapon : Equipment {
 			transform.rotation = Quaternion.Euler(0, 0, -90);
 			spriteRenderer.sortingOrder = 5;
 		}
+	}
+
+	public void StopAttack ()
+	{
+		col.enabled = false;
+		spriteRenderer.enabled = false;
 	}
 }

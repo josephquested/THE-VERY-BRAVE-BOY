@@ -2,24 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boy : Actor {
+public class Boy : MonoBehaviour {
 
 	// SYSTEM //
 
 	void Start ()
 	{
+		movement = GetComponent<Movement>();
 		slots = GetComponent<Slots>();
+		anim = GetComponent<Animator>();
 	}
 
 	void Update ()
 	{
+		UpdateInput();
 		UpdateMovement();
-		
-		UpdateSpeed();
-		UpdateAttack();
-		UpdateBlock();
 		UpdateDirection();
 		UpdateAnimator();
+		UpdateSpeed();
+		UpdateMelee();
+		UpdateBlock();
+	}
+
+	// INPUT //
+
+	float horizontal;
+	float vertical;
+	bool meleeDown;
+
+	void UpdateInput ()
+	{
+		horizontal = Input.GetAxisRaw("Horizontal");
+		vertical = Input.GetAxisRaw("Vertical");
+		meleeDown = Input.GetButtonDown("S");
 	}
 
 	// INVENTORY //
@@ -28,37 +43,25 @@ public class Boy : Actor {
 
 	// MOVEMENT //
 
+	Movement movement;
+
 	void UpdateMovement ()
 	{
-		horizontal = Input.GetAxisRaw("Horizontal");
-		vertical = Input.GetAxisRaw("Vertical");
-
 		if (horizontal != 0 || vertical != 0)
 		{
-			moving = true;
-			Move();
+			movement.Move(horizontal, vertical, _speed);
 		}
 		else
 		{
-			moving = false;
+			movement.StopMove();
 		}
-	}
-
-	void Move ()
-	{
-		rb.AddForce(Movement() * _speed * 10);
-	}
-
-	Vector2 Movement ()
-	{
-		if (horizontal == -1) return Vector2.left;
-		if (horizontal == 1) return Vector2.right;
-		if (vertical == 1) return Vector2.up;
-		else return Vector2.down;
 	}
 
 	// DIRECTION //
 
+	public int direction;
+
+	void UpdateDirection ()
 	{
 		if (!blocking && !attacking)
 		{
@@ -88,44 +91,28 @@ public class Boy : Actor {
 	// ATTACK //
 
 	bool attacking;
-	public float attackDuration;
-	public float thrust;
 
-	void UpdateAttack ()
+	// MELEE //
+
+	public Weapon meleeWeapon;
+
+	void UpdateMelee ()
 	{
-		if (Input.GetButtonDown("S") && !attacking && slots.equipmentInSlot[1] != null)
+		if (meleeDown && !attacking)
 		{
-			StartCoroutine(AttackRoutine());
+			StartCoroutine(MeleeRoutine());
 		}
 	}
 
-	IEnumerator AttackRoutine ()
+	IEnumerator MeleeRoutine ()
 	{
-		MeleeAttack(true);
-		yield return new WaitForSeconds(attackDuration);
-		MeleeAttack(false);
-	}
+		attacking = true;
+		meleeWeapon.AttackInDirection(direction);
 
-	void MeleeAttack (bool _attacking)
-	{
-		Weapon weapon = equipmentInSlot[(int)SlotType.S];
-		attacking = _attacking;
-		weapon.SetActive(attacking);
+		yield return new WaitForSeconds(meleeWeapon.attackDuration);
 
-		if (attacking)
-		{
-			weapon.AttackInDirection(direction);
-			Thrust();
-		}
-	}
-
-	void Thrust ()
-	{
-		Vector2 force = Vector2.up;
-		if (direction == 1) force = Vector2.right;
-		if (direction == 2) force = Vector2.down;
-		if (direction == 3) force = Vector2.left;
-		rb.AddForce(force * thrust, ForceMode2D.Impulse);
+		meleeWeapon.StopAttack();
+		attacking = false;
 	}
 
 	// BLOCK //
@@ -139,12 +126,14 @@ public class Boy : Actor {
 
 	// ANIMATOR //
 
+	Animator anim;
+
 	void UpdateAnimator ()
 	{
 		if (blocking) anim.speed = 0.75f;
 		else { anim.speed = 1f; }
 
-		anim.SetBool("Moving", moving);
+		anim.SetBool("Moving", movement.isMoving);
 		anim.SetBool("Attacking", attacking);
 		anim.SetInteger("Direction", direction);
 	}
