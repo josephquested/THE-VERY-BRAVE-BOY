@@ -9,13 +9,27 @@ public class Hit : MonoBehaviour {
 	public bool active;
 	public int damage;
 
-	void OnTriggerStay2D (Collider2D col)
+	// TRIGGERS //
+
+	public virtual void OnTriggerEnter2D (Collider2D col)
 	{
-		if (col.GetComponent<Status>() != null && active)
-		{
-			col.GetComponent<Status>().ReceiveDamage(damage);
-			GetComponent<Knockback>().ReceiveObject(col.gameObject);
-			active = false;
-		}
+		// override
+	}
+
+	public virtual void OnTriggerExit2D (Collider2D col)
+	{
+		// override
+	}
+
+	public virtual void OnTriggerStay2D (Collider2D col)
+	{
+		// override
+	}
+
+	// COLLISION //
+
+	public virtual void OnCollisionEnter2D (Collision2D col)
+	{
+		// override
 	}
 }

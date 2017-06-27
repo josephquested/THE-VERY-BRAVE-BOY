@@ -17,7 +17,7 @@ public class Status : MonoBehaviour {
 
 	public void ReceiveDamage (int damage)
 	{
-		if (!dead)
+		if (!dead && !invulnerable)
 		{
 			hitpoints -= damage;
 			StartCoroutine(InvulnerableCoroutine());
