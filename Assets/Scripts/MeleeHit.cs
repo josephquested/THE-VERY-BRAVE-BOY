@@ -10,9 +10,14 @@ public class MeleeHit : Hit {
 	{
 		if (col.GetComponent<Status>() != null && active)
 		{
-			col.GetComponent<Status>().ReceiveDamage(damage);
-			GetComponent<Knockback>().Directional(col.gameObject);
-			active = false;
+			Status status = col.gameObject.GetComponent<Status>();
+
+			if (!status.invulnerable)
+			{
+				status.ReceiveDamage(damage);
+				GetComponent<Knockback>().Directional(col.gameObject);
+				active = false;
+			}
 		}
 	}
 }

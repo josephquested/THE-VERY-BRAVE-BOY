@@ -17,7 +17,7 @@ public class Status : MonoBehaviour {
 
 	public void ReceiveDamage (int damage)
 	{
-		if (!dead && !invulnerable)
+		if (!dead)
 		{
 			hitpoints -= damage;
 			StartCoroutine(InvulnerableCoroutine());
@@ -29,8 +29,7 @@ public class Status : MonoBehaviour {
 
 	SpriteRenderer spriteRenderer;
 
-	bool invulnerable;
-
+	public bool invulnerable;
 	public float invulerableDuration;
 
 	IEnumerator InvulnerableCoroutine ()
@@ -46,9 +45,12 @@ public class Status : MonoBehaviour {
 		while (invulnerable)
 		{
 			spriteRenderer.color = Color.black;
-			yield return new WaitForSeconds(0.1f);
+			yield return new WaitForSeconds(0.05f);
+			spriteRenderer.enabled = false;
+			yield return new WaitForSeconds(0.05f);
+			spriteRenderer.enabled = true;
 			spriteRenderer.color = Color.white;
-			yield return new WaitForSeconds(0.1f);
+			yield return new WaitForSeconds(0.05f);
 		}
 	}
 

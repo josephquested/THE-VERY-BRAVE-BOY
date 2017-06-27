@@ -10,12 +10,17 @@ public class PassiveHit : Hit {
 
 	public override void OnCollisionEnter2D (Collision2D col)
 	{
-		if (col.gameObject.tag == "Player" || canDamageEnemies)
+		if (col.gameObject.GetComponent<Status>() != null && active)
 		{
-			if (col.gameObject.GetComponent<Status>() != null && active)
+			Status status = col.gameObject.GetComponent<Status>();
+
+			if (col.gameObject.tag == "Player" || canDamageEnemies)
 			{
-				col.gameObject.GetComponent<Status>().ReceiveDamage(damage);
-				GetComponent<Knockback>().Differential(col.gameObject);
+				if (!status.invulnerable)
+				{
+					col.gameObject.GetComponent<Status>().ReceiveDamage(damage);
+					GetComponent<Knockback>().Differential(col.gameObject);
+				}
 			}
 		}
 	}
