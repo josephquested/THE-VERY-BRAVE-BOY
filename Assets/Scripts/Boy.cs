@@ -34,7 +34,7 @@ public class Boy : MonoBehaviour {
 	{
 		horizontal = Input.GetAxisRaw("Horizontal");
 		vertical = Input.GetAxisRaw("Vertical");
-		meleeDown = Input.GetButtonDown("S");
+		meleeDown = Input.GetButtonDown("X");
 	}
 
 	// INVENTORY //
@@ -104,7 +104,7 @@ public class Boy : MonoBehaviour {
 
 	IEnumerator MeleeRoutine ()
 	{
-		MeleeWeapon meleeWeapon = slots.equipmentInSlot[(int)SlotType.S] as MeleeWeapon;
+		MeleeWeapon meleeWeapon = slots.equipmentInSlot[(int)SlotType.X] as MeleeWeapon;
 
 		attacking = true;
 		meleeWeapon.AttackInDirection(direction);

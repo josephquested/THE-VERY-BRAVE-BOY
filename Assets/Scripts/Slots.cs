@@ -6,9 +6,9 @@ public class Slots : MonoBehaviour {
 
 	// EQUIPMENT //
 
-	public SpriteRenderer[] slotIconRenderer = new SpriteRenderer[4];
-	public Animator[] slotAnims = new Animator[4];
-	public Equipment[] equipmentInSlot = new Equipment[4];
+	public SpriteRenderer[] slotIconRenderer = new SpriteRenderer[3];
+	public Animator[] slotAnims = new Animator[3];
+	public Equipment[] equipmentInSlot = new Equipment[3];
 
 	public void ReceiveEquipment (Equipment equipment)
 	{

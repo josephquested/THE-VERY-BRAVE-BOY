@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum SlotType {A, S, Z, X};
+public enum SlotType {Z, X, C};
 
 public class Equipment : MonoBehaviour {
 
@@ -25,7 +25,6 @@ public class Equipment : MonoBehaviour {
 	public void EquipToParent (Transform parent)
 	{
 		equipped = true;
-		col.enabled = false;
 		spriteRenderer.enabled = false;
 		transform.parent = parent;
 	}
@@ -33,7 +32,6 @@ public class Equipment : MonoBehaviour {
 	public void Unequip ()
 	{
 		equipped = false;
-		col.enabled = true;
 		spriteRenderer.enabled = true;
 		transform.parent = null;
 	}
