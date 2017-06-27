@@ -17,9 +17,12 @@ public class Status : MonoBehaviour {
 
 	public void ReceiveDamage (int damage)
 	{
-		hitpoints -= damage;
-		StartCoroutine(InvulnerableCoroutine());
-		if (hitpoints <= 0) Die();
+		if (!dead)
+		{
+			hitpoints -= damage;
+			StartCoroutine(InvulnerableCoroutine());
+			if (hitpoints <= 0) Die();
+		}
 	}
 
 	// INVULNERABLE //
@@ -51,8 +54,10 @@ public class Status : MonoBehaviour {
 
 	// STATUS //
 
+	public bool dead;
+
 	void Die ()
 	{
-		Destroy(gameObject);
+		dead = true;
 	}
 }

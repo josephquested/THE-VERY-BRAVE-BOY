@@ -9,11 +9,13 @@ public class MeleeWeapon : Equipment {
 	void Start ()
 	{
 		hit = GetComponent<Hit>();
+		knockback = GetComponent<Knockback>();
 	}
 
 	// ATTACK //
 
 	Hit hit;
+	Knockback knockback;
 
 	public float damage;
 	public float thrust;
@@ -22,6 +24,8 @@ public class MeleeWeapon : Equipment {
 	public void AttackInDirection (int direction)
 	{
 		hit.active = true;
+		knockback.direction = direction;
+
 		spriteRenderer.enabled = true;
 		Thrust(direction);
 

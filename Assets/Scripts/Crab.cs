@@ -10,11 +10,13 @@ public class Crab : MonoBehaviour {
 	{
 		movement = GetComponent<Movement>();
 		anim = GetComponent<Animator>();
+		status = GetComponent<Status>();
 		StartCoroutine(MovementRoutine());
 	}
 
 	void Update ()
 	{
+		UpdateStatus();
 		UpdateMovement();
 		UpdateDirection();
 		UpdateAnimator();
@@ -41,6 +43,20 @@ public class Crab : MonoBehaviour {
 		yield return new WaitForSeconds(Random.Range(movementDurationMin, movementDurationMax));
 		horizontal = 0;
 		StartCoroutine(MovementRoutine());
+	}
+
+	// STATUS //
+
+	Status status;
+
+	void UpdateStatus ()
+	{
+		if (status.dead)
+		{
+			anim.SetTrigger("Dead");
+			GetComponent<Collider2D>().enabled = false;
+			Destroy(this);
+		}
 	}
 
 	// MOVEMENT //

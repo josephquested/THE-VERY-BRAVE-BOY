@@ -14,6 +14,7 @@ public class Hit : MonoBehaviour {
 		if (col.GetComponent<Status>() != null && active)
 		{
 			col.GetComponent<Status>().ReceiveDamage(damage);
+			GetComponent<Knockback>().ReceiveObject(col.gameObject);
 			active = false;
 		}
 	}
