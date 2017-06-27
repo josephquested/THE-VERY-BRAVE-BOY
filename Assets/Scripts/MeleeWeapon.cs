@@ -2,9 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : Equipment {
+public class MeleeWeapon : Equipment {
+
+	// SYSTEM //
+
+	void Start ()
+	{
+		hit = GetComponent<Hit>();
+	}
 
 	// ATTACK //
+
+	Hit hit;
 
 	public float damage;
 	public float thrust;
@@ -12,7 +21,7 @@ public class Weapon : Equipment {
 
 	public void AttackInDirection (int direction)
 	{
-		col.enabled = true;
+		hit.active = true;
 		spriteRenderer.enabled = true;
 		Thrust(direction);
 
@@ -47,7 +56,7 @@ public class Weapon : Equipment {
 
 	public void StopAttack ()
 	{
-		col.enabled = false;
+		hit.active = false;
 		spriteRenderer.enabled = false;
 	}
 

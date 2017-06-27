@@ -11,7 +11,7 @@ public class Equipment : MonoBehaviour {
 	protected SpriteRenderer spriteRenderer;
 	protected Collider2D col;
 
-	void Start ()
+	void Awake ()
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		col = GetComponent<Collider2D>();

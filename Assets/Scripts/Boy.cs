@@ -104,7 +104,7 @@ public class Boy : MonoBehaviour {
 
 	IEnumerator MeleeRoutine ()
 	{
-		Weapon meleeWeapon = slots.equipmentInSlot[(int)SlotType.S] as Weapon;
+		MeleeWeapon meleeWeapon = slots.equipmentInSlot[(int)SlotType.S] as MeleeWeapon;
 
 		attacking = true;
 		meleeWeapon.AttackInDirection(direction);

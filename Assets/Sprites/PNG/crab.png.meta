@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b00e039b5bc20d541907595d78e56775
-timeCreated: 1498528295
+timeCreated: 1498530892
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -76,12 +76,12 @@ TextureImporter:
       name: crab_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 1
+        y: 1
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -89,12 +89,12 @@ TextureImporter:
       name: crab_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
+        x: 19
+        y: 1
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -102,12 +102,12 @@ TextureImporter:
       name: crab_2
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 37
+        y: 1
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
