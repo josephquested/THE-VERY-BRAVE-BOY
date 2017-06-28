@@ -9,6 +9,7 @@ public class Status : MonoBehaviour {
 	void Awake ()
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	// DAMAGE //
@@ -21,6 +22,7 @@ public class Status : MonoBehaviour {
 		{
 			hitpoints -= damage;
 			StartCoroutine(InvulnerableCoroutine());
+			HurtAudio();
 			if (hitpoints <= 0) Die();
 		}
 	}
@@ -61,5 +63,15 @@ public class Status : MonoBehaviour {
 	void Die ()
 	{
 		dead = true;
+	}
+
+	// AUDIO //
+
+	AudioSource audioSource;
+
+	void HurtAudio ()
+	{
+		audioSource.pitch = Random.Range(0.8f, 1.2f);
+		audioSource.Play();
 	}
 }

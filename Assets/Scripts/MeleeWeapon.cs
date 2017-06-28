@@ -28,7 +28,7 @@ public class MeleeWeapon : Equipment {
 		knockback.direction = direction;
 		spriteRenderer.enabled = true;
 
-		AttackAudio();
+		PlayAttackAudio();
 		Thrust(direction);
 
 		if (direction == 0)
@@ -79,8 +79,11 @@ public class MeleeWeapon : Equipment {
 
 	AudioSource audioSource;
 
-	void AttackAudio ()
+	public AudioClip attackAudio;
+
+	void PlayAttackAudio ()
 	{
+		audioSource.clip = attackAudio;
 		audioSource.pitch = Random.Range(0.8f, 1.2f);
 		audioSource.Play();
 	}

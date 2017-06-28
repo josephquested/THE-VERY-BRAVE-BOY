@@ -14,6 +14,7 @@ public class MeleeHit : Hit {
 
 			if (!status.invulnerable)
 			{
+				PlayHitAudio();
 				status.ReceiveDamage(damage);
 				GetComponent<Knockback>().Directional(col.gameObject);
 				active = false;

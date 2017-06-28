@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Hit : MonoBehaviour {
 
+	// SYSTEM //
+
+	void Awake ()
+	{
+		audioSource = GetComponent<AudioSource>();
+	}
+
 	// DAMAGE //
 
 	public bool active;
@@ -31,5 +38,18 @@ public class Hit : MonoBehaviour {
 	public virtual void OnCollisionEnter2D (Collision2D col)
 	{
 		// override
+	}
+
+	// AUDIO //
+
+	AudioSource audioSource;
+
+	public AudioClip hitAudio;
+
+	public void PlayHitAudio ()
+	{
+		audioSource.clip = hitAudio;
+		audioSource.pitch = Random.Range(0.8f, 1.2f);
+		audioSource.Play();
 	}
 }
