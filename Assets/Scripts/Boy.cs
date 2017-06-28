@@ -21,7 +21,7 @@ public class Boy : MonoBehaviour {
 		UpdateAnimator();
 		UpdateSpeed();
 		UpdateMelee();
-		UpdateBlock();
+		UpdateStrafe();
 	}
 
 	// INPUT //
@@ -63,7 +63,7 @@ public class Boy : MonoBehaviour {
 
 	void UpdateDirection ()
 	{
-		if (!blocking && !attacking)
+		if (!strafing && !attacking)
 		{
 			if (horizontal == -1) direction = 3;
 			else if (horizontal == 1) direction = 1;
@@ -77,12 +77,12 @@ public class Boy : MonoBehaviour {
 	float _speed;
 
 	public float speed;
-	public float blockSpeedModifier;
+	public float strafeSpeedModifier;
 
 	void UpdateSpeed ()
 	{
 		float speedModifier = 0;
-		if (blocking) speedModifier += blockSpeedModifier;
+		if (strafing) speedModifier += strafeSpeedModifier;
 		if (attacking) speedModifier -= 10;
 		_speed = speed + speedModifier;
 		if (_speed < 0) _speed = 0;
@@ -117,11 +117,12 @@ public class Boy : MonoBehaviour {
 
 	// BLOCK //
 
-	bool blocking;
+	[HideInInspector]
+	public bool strafing;
 
-	public void UpdateBlock ()
+	public void UpdateStrafe ()
 	{
-		blocking = Input.GetButton("Block");
+		strafing = Input.GetButton("Strafe");
 	}
 
 	// ANIMATOR //
@@ -130,7 +131,7 @@ public class Boy : MonoBehaviour {
 
 	void UpdateAnimator ()
 	{
-		if (blocking) anim.speed = 0.75f;
+		if (strafing) anim.speed = 0.75f;
 		else { anim.speed = 1f; }
 
 		anim.SetBool("Moving", movement.isMoving);

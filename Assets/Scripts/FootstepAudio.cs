@@ -8,6 +8,7 @@ public class FootstepAudio : MonoBehaviour {
 
 	AudioSource audioSource;
 
+	public Boy boy;
 	public Movement movement;
 
 	void Start ()
@@ -18,12 +19,18 @@ public class FootstepAudio : MonoBehaviour {
 	void Update ()
 	{
 		UpdateFootsteps();
+		UpdateDelay();
+		UpdateVolume();
 	}
 
 	// FOOTSTEPS //
 
 	bool canStep = true;
 
+	float _stepDelay;
+	float _volume;
+
+	public float volume;
 	public float stepDelay;
 	public float pitchMin;
 	public float pitchMax;
@@ -41,8 +48,21 @@ public class FootstepAudio : MonoBehaviour {
 		canStep = false;
 		RandomisePitch();
 		audioSource.Play();
-		yield return new WaitForSeconds(stepDelay);
+		yield return new WaitForSeconds(_stepDelay);
 		canStep = true;
+	}
+
+	void UpdateDelay ()
+	{
+		if (boy.strafing) _stepDelay = stepDelay * 1.5f;
+		else { _stepDelay = stepDelay; }
+	}
+
+	void UpdateVolume ()
+	{
+		if (boy.strafing) _volume = volume * 0.5f;
+		else { _volume = volume; }
+		audioSource.volume = _volume;
 	}
 
 	void RandomisePitch ()
