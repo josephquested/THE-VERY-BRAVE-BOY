@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum SlotType {Z, X, C};
 
-public class Equipment : MonoBehaviour {
+public class Equipment : Item {
 
 	// SYSTEM //
 
