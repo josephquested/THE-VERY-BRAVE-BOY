@@ -33,7 +33,6 @@ public class Crab : MonoBehaviour {
 	public float speedMax;
 	public float speedMin;
 
-
 	IEnumerator MovementRoutine ()
 	{
 		yield return new WaitForSeconds(Random.Range(movementCycleDelayMin, movementCycleDelayMax));
@@ -54,7 +53,8 @@ public class Crab : MonoBehaviour {
 		if (status.dead)
 		{
 			anim.SetTrigger("Dead");
-			GetComponent<Collider2D>().enabled = false;
+			GetComponent<Collider2D>().isTrigger = true;
+			GetComponent<Consumable>().readyToEat = true;
 			Destroy(this);
 		}
 	}

@@ -15,6 +15,7 @@ public class Status : MonoBehaviour {
 	// DAMAGE //
 
 	public int hitpoints;
+	public int maxHitpoints;
 
 	public void ReceiveDamage (int damage)
 	{
@@ -24,6 +25,15 @@ public class Status : MonoBehaviour {
 			StartCoroutine(InvulnerableCoroutine());
 			HurtAudio();
 			if (hitpoints <= 0) Die();
+		}
+	}
+
+	public void ReceiveHeal (int heal)
+	{
+		if (!dead)
+		{
+			hitpoints += heal;
+			if (hitpoints > maxHitpoints) hitpoints = maxHitpoints;
 		}
 	}
 

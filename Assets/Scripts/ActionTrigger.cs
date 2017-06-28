@@ -49,7 +49,12 @@ public class ActionTrigger : MonoBehaviour {
 	void UpdateSpacebarUI ()
 	{
 		if (itemInTrigger is MeleeWeapon) spacebarAnim.SetTrigger("Equip");
-		if (itemInTrigger is Consumable) spacebarAnim.SetTrigger("Eat");
+
+		if (itemInTrigger is Consumable)
+		{
+			if (itemInTrigger.GetComponent<Consumable>().readyToEat) spacebarAnim.SetTrigger("Eat");
+		}
+
 		if (itemInTrigger == null)  spacebarAnim.SetTrigger("Null");
 	}
 

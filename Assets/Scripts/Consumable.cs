@@ -6,11 +6,14 @@ public class Consumable : Item {
 
 	// CONSUMABLE //
 
+	public GameObject consumeParticlePrefab;
 	public int value;
+	public bool readyToEat;
 
 	public void Eat ()
 	{
-		print("yum");
+		GameObject.FindWithTag("Player").GetComponent<Status>().ReceiveHeal(value);
+		Instantiate(consumeParticlePrefab, transform.position, transform.rotation);
 		Destroy(gameObject);
 	}
 }

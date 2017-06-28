@@ -36,7 +36,14 @@ public class ParticlePop : MonoBehaviour {
 	{
 		Vector2 force = new Vector2(Random.Range(minForce, maxForce), Random.Range(minForce, maxForce));
 		GameObject _prefab = Instantiate(prefab, transform.position, transform.rotation);
+		_prefab.transform.Rotate(0, 0, RandomRotation());
 		_prefab.GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Length)];
 		_prefab.GetComponent<Rigidbody2D>().AddForce(force);
+	}
+
+	float RandomRotation ()
+	{
+		float[] rotations = new float[] {0, 90, 180, 270};
+		return rotations[Random.Range(0, 4)];
 	}
 }
