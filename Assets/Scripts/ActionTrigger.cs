@@ -44,15 +44,13 @@ public class ActionTrigger : MonoBehaviour {
 
 	// UI //
 
-	public SpriteRenderer spacebarRenderer;
-	public Sprite equipSprite;
-	public Sprite eatSprite;
+	public Animator spacebarAnim;
 
 	void UpdateSpacebarUI ()
 	{
-		if (itemInTrigger is MeleeWeapon) spacebarRenderer.sprite = equipSprite;
-		if (itemInTrigger is Consumable) spacebarRenderer.sprite = eatSprite;
-		spacebarRenderer.SetActive(itemInTrigger);
+		if (itemInTrigger is MeleeWeapon) spacebarAnim.SetTrigger("Equip");
+		if (itemInTrigger is Consumable) spacebarAnim.SetTrigger("Eat");
+		if (itemInTrigger == null)  spacebarAnim.SetTrigger("Null");
 	}
 
 	// TRIGGER //
