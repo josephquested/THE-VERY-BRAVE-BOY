@@ -1,11 +1,14 @@
 fileFormatVersion: 2
-guid: e5f269d6c0a6141af8a3521da7b3bcb1
-timeCreated: 1498605814
+guid: 725f62c4dcf127144963a48e6c398817
+timeCreated: 1498607071
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: main-tilemap_0
-    21300002: main-tilemap_1
+    21300000: crud-particles_0
+    21300002: crud-particles_1
+    21300004: crud-particles_2
+    21300006: crud-particles_3
+    21300008: crud-particles_4
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -53,7 +56,7 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 2048
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -72,26 +75,65 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: main-tilemap_0
+      name: crud-particles_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 240
-        width: 16
-        height: 16
+        x: 6
+        y: 6
+        width: 6
+        height: 7
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: main-tilemap_1
+      name: crud-particles_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 241
-        width: 16
-        height: 15
+        x: 25
+        y: 6
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crud-particles_2
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 7
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crud-particles_3
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 5
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crud-particles_4
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 8
+        width: 5
+        height: 4
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -45,12 +45,12 @@ public class Status : MonoBehaviour {
 		while (invulnerable)
 		{
 			spriteRenderer.color = Color.black;
-			yield return new WaitForSeconds(0.05f);
-			spriteRenderer.enabled = false;
-			yield return new WaitForSeconds(0.05f);
-			spriteRenderer.enabled = true;
+			yield return new WaitForSeconds(0.075f);
 			spriteRenderer.color = Color.white;
-			yield return new WaitForSeconds(0.05f);
+			spriteRenderer.enabled = false;
+			yield return new WaitForSeconds(0.075f);
+			spriteRenderer.enabled = true;
+			yield return new WaitForSeconds(0.075f);
 		}
 	}
 
