@@ -10,6 +10,7 @@ public class MeleeWeapon : Equipment {
 	{
 		hit = GetComponent<Hit>();
 		knockback = GetComponent<Knockback>();
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	// ATTACK //
@@ -25,8 +26,9 @@ public class MeleeWeapon : Equipment {
 	{
 		hit.active = true;
 		knockback.direction = direction;
-
 		spriteRenderer.enabled = true;
+
+		AttackAudio();
 		Thrust(direction);
 
 		if (direction == 0)
@@ -71,5 +73,15 @@ public class MeleeWeapon : Equipment {
 		if (direction == 2) force = Vector2.down;
 		if (direction == 3) force = Vector2.left;
 		transform.parent.GetComponent<Rigidbody2D>().AddForce(force * thrust, ForceMode2D.Impulse);
+	}
+
+	// AUDIO //
+
+	AudioSource audioSource;
+
+	void AttackAudio ()
+	{
+		audioSource.pitch = Random.Range(0.8f, 1.2f);
+		audioSource.Play();
 	}
 }
