@@ -8,7 +8,7 @@ public class PassiveHit : Hit {
 
 	public bool canDamageEnemies;
 
-	public override void OnCollisionEnter2D (Collision2D col)
+	public override void OnCollisionStay2D (Collision2D col)
 	{
 		if (col.gameObject.GetComponent<Status>() != null && active)
 		{

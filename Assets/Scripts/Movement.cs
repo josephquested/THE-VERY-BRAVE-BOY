@@ -16,11 +16,15 @@ public class Movement : MonoBehaviour {
 	// MOVEMENT //
 
 	public bool isMoving;
+	public bool canMove = true;
 
 	public void Move (float horizontal, float vertical, float speed)
 	{
-		isMoving = true;
-		rb.AddForce(GetMovementVector(horizontal, vertical) * speed * 10);
+		if (canMove)
+		{
+			isMoving = true;
+			rb.AddForce(GetMovementVector(horizontal, vertical) * speed * 10);
+		}
 	}
 
 	public void StopMove ()

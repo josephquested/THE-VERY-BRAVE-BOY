@@ -48,15 +48,26 @@ public class Crab : MonoBehaviour {
 
 	Status status;
 
+	bool dying;
+
 	void UpdateStatus ()
 	{
-		if (status.dead)
+		if (status.dead && !dying)
 		{
-			anim.SetTrigger("Dead");
-			GetComponent<Collider2D>().isTrigger = true;
-			GetComponent<Consumable>().readyToEat = true;
-			Destroy(this);
+			dying = true;
+			StartCoroutine(DieRoutine());
 		}
+	}
+
+	IEnumerator DieRoutine ()
+	{
+		anim.SetTrigger("Dead");
+		movement.canMove = false;
+		GetComponent<Collider2D>().isTrigger = true;
+		GetComponent<SpriteRenderer>().sortingOrder--;
+		yield return new WaitForSeconds(0.75f);
+		GetComponent<Consumable>().readyToEat = true;
+		Destroy(this);
 	}
 
 	// MOVEMENT //

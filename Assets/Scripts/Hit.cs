@@ -40,6 +40,11 @@ public class Hit : MonoBehaviour {
 		// override
 	}
 
+	public virtual void OnCollisionStay2D (Collision2D col)
+	{
+		// override
+	}
+
 	// AUDIO //
 
 	AudioSource audioSource;
