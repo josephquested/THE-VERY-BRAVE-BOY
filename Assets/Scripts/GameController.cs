@@ -24,6 +24,6 @@ public class GameController : MonoBehaviour {
 
 	public void GameOver ()
 	{
-		SceneManager.LoadScene(Application.loadedLevel);
+		SceneManager.LoadScene("Overworld");
 	}
 }

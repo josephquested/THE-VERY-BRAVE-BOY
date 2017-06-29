@@ -67,7 +67,7 @@ public class ActionTrigger : MonoBehaviour {
 
 	public Item itemInTrigger;
 
-	void OnTriggerEnter2D (Collider2D collider)
+	void OnTriggerStay2D (Collider2D collider)
 	{
 		if (collider.GetComponent<Item>() != null)
 		{

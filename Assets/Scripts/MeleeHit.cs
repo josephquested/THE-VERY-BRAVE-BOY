@@ -6,7 +6,7 @@ public class MeleeHit : Hit {
 
 	// DAMAGE //
 
-	public override void OnTriggerStay2D (Collider2D col)
+	void OnTriggerStay2D (Collider2D col)
 	{
 		if (col.GetComponent<Status>() != null && active)
 		{

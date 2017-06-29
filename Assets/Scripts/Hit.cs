@@ -16,35 +16,6 @@ public class Hit : MonoBehaviour {
 	public bool active;
 	public int damage;
 
-	// TRIGGERS //
-
-	public virtual void OnTriggerEnter2D (Collider2D col)
-	{
-		// override
-	}
-
-	public virtual void OnTriggerExit2D (Collider2D col)
-	{
-		// override
-	}
-
-	public virtual void OnTriggerStay2D (Collider2D col)
-	{
-		// override
-	}
-
-	// COLLISION //
-
-	public virtual void OnCollisionEnter2D (Collision2D col)
-	{
-		// override
-	}
-
-	public virtual void OnCollisionStay2D (Collision2D col)
-	{
-		// override
-	}
-
 	// AUDIO //
 
 	AudioSource audioSource;
