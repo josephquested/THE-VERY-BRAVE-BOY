@@ -18,4 +18,11 @@ public class GameController : MonoBehaviour {
 			Application.Quit();
 		}
 	}
+
+	// GAME CONTROLS //
+
+	public void GameOver ()
+	{
+		Application.LoadLevel(Application.loadedLevel);
+	}
 }

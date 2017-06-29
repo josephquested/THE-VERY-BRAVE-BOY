@@ -6,7 +6,12 @@ public class ActionTrigger : MonoBehaviour {
 
 	// SYSTEM //
 
-	public Slots slots;
+	Slots slots;
+
+	void Start ()
+	{
+		slots = GameObject.FindWithTag("Slots").GetComponent<Slots>();
+	}
 
 	void Update ()
 	{

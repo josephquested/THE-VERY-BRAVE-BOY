@@ -12,7 +12,7 @@ public class Slots : MonoBehaviour {
 
 	public void ReceiveEquipment (Equipment equipment)
 	{
-		equipment.EquipToParent(transform);
+		equipment.EquipToParent(GameObject.FindWithTag("Player").transform);
 		equipmentInSlot[(int)equipment.slotType] = equipment;
 		slotAnims[(int)equipment.slotType].SetTrigger("Activate");
 		slotIconRenderer[(int)equipment.slotType].sprite = equipment.gameObject.GetComponent<SpriteRenderer>().sprite;

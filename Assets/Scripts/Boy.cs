@@ -9,8 +9,9 @@ public class Boy : MonoBehaviour {
 	void Start ()
 	{
 		movement = GetComponent<Movement>();
-		slots = GetComponent<Slots>();
+		status = GetComponent<Status>();
 		anim = GetComponent<Animator>();
+		slots = GameObject.FindWithTag("Slots").GetComponent<Slots>();
 	}
 
 	void Update ()
@@ -22,6 +23,7 @@ public class Boy : MonoBehaviour {
 		UpdateSpeed();
 		UpdateMelee();
 		UpdateStrafe();
+		UpdateStatus();
 	}
 
 	// INPUT //
@@ -35,6 +37,18 @@ public class Boy : MonoBehaviour {
 		horizontal = Input.GetAxisRaw("Horizontal");
 		vertical = Input.GetAxisRaw("Vertical");
 		meleeDown = Input.GetButtonDown("X");
+	}
+
+	// STATUS //
+
+	Status status;
+
+	void UpdateStatus ()
+	{
+		if (status.dead)
+		{
+			GameObject.FindWithTag("GameController").GetComponent<GameController>().GameOver();
+		}
 	}
 
 	// INVENTORY //
