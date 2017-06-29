@@ -17,14 +17,14 @@ Platform assembly: C:\Users\Joseph\Documents\Work\THE-VERY-BRAVE-BOY\THE VERY BR
 Loading C:\Users\Joseph\Documents\Work\THE-VERY-BRAVE-BOY\THE VERY BRAVE BOY_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\Joseph\Documents\Work\THE-VERY-BRAVE-BOY\THE VERY BRAVE BOY_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
 Loading C:\Users\Joseph\Documents\Work\THE-VERY-BRAVE-BOY\THE VERY BRAVE BOY_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-- Completed reload, in  0.077 seconds
+- Completed reload, in  0.088 seconds
 Platform assembly: C:\Users\Joseph\Documents\Work\THE-VERY-BRAVE-BOY\THE VERY BRAVE BOY_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Joseph\Documents\Work\THE-VERY-BRAVE-BOY\THE VERY BRAVE BOY_Data\Managed\System.dll (this message is harmless)
 desktop: 2560x1440 59Hz; virtual: 4480x1440 at -1920,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.285258 ms
+UnloadTime: 0.995067 ms
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 1128 -> priority: 1 
-  Thread -> id: 4180 -> priority: 1 
+  Thread -> id: 2cb4 -> priority: 1 
+  Thread -> id: 29d8 -> priority: 1 

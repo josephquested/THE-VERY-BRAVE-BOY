@@ -25,7 +25,7 @@ public class Hit : MonoBehaviour {
 	public void PlayHitAudio ()
 	{
 		audioSource.clip = hitAudio;
-		audioSource.pitch = Random.Range(0.8f, 1.2f);
+		audioSource.pitch = Random.Range(1, 1.2f);
 		audioSource.Play();
 	}
 }
