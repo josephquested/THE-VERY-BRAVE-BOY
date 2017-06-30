@@ -9,6 +9,7 @@ public class Crab : MonoBehaviour {
 	void Start ()
 	{
 		movement = GetComponent<Movement>();
+		// consumable = GetComponentInChildren<Consumable>();
 		anim = GetComponent<Animator>();
 		status = GetComponent<Status>();
 		StartCoroutine(MovementRoutine());
@@ -46,28 +47,23 @@ public class Crab : MonoBehaviour {
 
 	// STATUS //
 
-	Status status;
+	public GameObject deadPrefab;
 
-	bool dying;
+	Status status;
 
 	void UpdateStatus ()
 	{
-		if (status.dead && !dying)
+		if (status.dead)
 		{
-			dying = true;
-			StartCoroutine(DieRoutine());
+			Die();
 		}
 	}
 
-	IEnumerator DieRoutine ()
+	void Die ()
 	{
-		anim.SetTrigger("Dead");
-		movement.canMove = false;
-		GetComponent<Collider2D>().isTrigger = true;
-		GetComponent<SpriteRenderer>().sortingOrder--;
-		yield return new WaitForSeconds(0.75f);
-		GetComponent<Consumable>().readyToEat = true;
-		Destroy(this);
+		GameObject deadCrab = Instantiate(deadPrefab, transform.position, transform.rotation);
+		deadCrab.GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity;
+		Destroy(gameObject);
 	}
 
 	// MOVEMENT //

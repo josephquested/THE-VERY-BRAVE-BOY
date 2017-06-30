@@ -10,6 +10,7 @@ public class Status : MonoBehaviour {
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		audioSource = GetComponent<AudioSource>();
+		if (invulnerable) StartCoroutine(InvulnerableRoutine());
 	}
 
 	// DAMAGE //
@@ -22,7 +23,7 @@ public class Status : MonoBehaviour {
 		if (!dead)
 		{
 			hitpoints -= damage;
-			StartCoroutine(InvulnerableCoroutine());
+			StartCoroutine(InvulnerableRoutine());
 			HurtAudio();
 			if (hitpoints <= 0) Die();
 		}
@@ -44,7 +45,7 @@ public class Status : MonoBehaviour {
 	public bool invulnerable;
 	public float invulerableDuration;
 
-	IEnumerator InvulnerableCoroutine ()
+	IEnumerator InvulnerableRoutine ()
 	{
 		invulnerable = true;
 		StartCoroutine(FlashRoutine());

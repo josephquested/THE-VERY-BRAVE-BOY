@@ -14,6 +14,6 @@ public class Consumable : Item {
 	{
 		GameObject.FindWithTag("Player").GetComponent<Status>().ReceiveHeal(value);
 		Instantiate(consumeParticlePrefab, transform.position, transform.rotation);
-		Destroy(gameObject);
+		Destroy(transform.parent.gameObject);
 	}
 }

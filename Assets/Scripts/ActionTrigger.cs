@@ -42,8 +42,11 @@ public class ActionTrigger : MonoBehaviour {
 		else if (itemInTrigger is Consumable)
 		{
 			Consumable consumable = itemInTrigger as Consumable;
-			consumable.Eat();
-			itemInTrigger = null;
+			if (consumable.readyToEat)
+			{
+				consumable.Eat();
+				itemInTrigger = null;
+			}
 		}
 	}
 

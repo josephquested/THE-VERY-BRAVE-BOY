@@ -17,14 +17,20 @@ Platform assembly: C:\Users\Joseph\Documents\Work\THE-VERY-BRAVE-BOY\THE VERY BR
 Loading C:\Users\Joseph\Documents\Work\THE-VERY-BRAVE-BOY\THE VERY BRAVE BOY_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\Joseph\Documents\Work\THE-VERY-BRAVE-BOY\THE VERY BRAVE BOY_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
 Loading C:\Users\Joseph\Documents\Work\THE-VERY-BRAVE-BOY\THE VERY BRAVE BOY_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-- Completed reload, in  0.075 seconds
+- Completed reload, in  0.073 seconds
 Platform assembly: C:\Users\Joseph\Documents\Work\THE-VERY-BRAVE-BOY\THE VERY BRAVE BOY_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Joseph\Documents\Work\THE-VERY-BRAVE-BOY\THE VERY BRAVE BOY_Data\Managed\System.dll (this message is harmless)
 desktop: 2560x1440 59Hz; virtual: 4480x1440 at -1920,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 0.922300 ms
+UnloadTime: 0.834044 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 6.618583 ms
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 1969.
+Total: 0.800144 ms (FindLiveObjects: 0.118648 ms CreateObjectMapping: 0.022210 ms MarkObjects: 0.652857 ms  DeleteObjects: 0.005260 ms)
+
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 5794 -> priority: 1 
-  Thread -> id: 444 -> priority: 1 
+  Thread -> id: 3e1c -> priority: 1 
+  Thread -> id: 421c -> priority: 1 
