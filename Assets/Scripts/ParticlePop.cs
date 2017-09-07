@@ -6,7 +6,6 @@ public class ParticlePop : MonoBehaviour {
 
 	// SYSTEM //
 
-
 	void Start ()
 	{
 		Pop();

@@ -9,7 +9,6 @@ public class Crab : MonoBehaviour {
 	void Start ()
 	{
 		movement = GetComponent<Movement>();
-		// consumable = GetComponentInChildren<Consumable>();
 		anim = GetComponent<Animator>();
 		status = GetComponent<Status>();
 		StartCoroutine(MovementRoutine());
